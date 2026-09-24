@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="DiveHubLogbook.Views.LogbookPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:DiveHubLogbook.ViewModels"
+    xmlns:models="clr-namespace:DiveHubLogbook.Models"
+    x:DataType="viewmodels:LogbookViewModel"
+    Title="Logbook"
+    BackgroundColor="{StaticResource DiveBackground}">
+
+    <Grid
+        Padding="20"
+        RowDefinitions="Auto,Auto,*"
+        RowSpacing="15">
+
+        <Label
+            Grid.Row="0"
+            Text="My Dives"
+            Style="{StaticResource PageTitleStyle}" />
+
+        <SearchBar
+            Grid.Row="1"
+            Placeholder="Search by dive site, buddy, or notes"
+            Text="{Binding SearchText}"
+            BackgroundColor="{StaticResource DiveSurface}"
+            TextColor="{StaticResource DiveTextPrimary}"
+            PlaceholderColor="{StaticResource DiveTextSecondary}" />
+
+        <CollectionView
+            Grid.Row="2"
+            ItemsSource="{Binding Dives}"
+            SelectionMode="Single"
+            SelectionChanged="OnDiveSelected">
+
+            <CollectionView.EmptyView>
+
+                <VerticalStackLayout
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Spacing="8">
+
+                    <Label
+                        Text="No dives recorded yet."
+                        FontSize="18"
+                        TextColor="{StaticResource DiveTextSecondary}" />
+
+                </VerticalStackLayout>
+
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+
+                <DataTemplate x:DataType="models:Dive">
+
+                    <Border
+                        Padding="16"
+                        Margin="0,0,0,12"
+                        BackgroundColor="{StaticResource DiveSurface}"
+                        Stroke="{StaticResource DiveBorder}"
+                        StrokeThickness="1">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="14" />
+                        </Border.StrokeShape>
+
+                        <Grid
+                            ColumnDefinitions="*,Auto"
+                            RowDefinitions="Auto,Auto,Auto"
+                            ColumnSpacing="10"
+                            RowSpacing="4">
+
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Text="{Binding DiveSite}"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource DiveNavy}" />
+
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Text="{Binding DiveNumber, StringFormat='Dive #{0}'}"
+                                TextColor="{StaticResource DiveTurquoise}"
+                                FontAttributes="Bold" />
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Text="{Binding DiveDate, StringFormat='{}{0:dd MMM yyyy}'}"
+                                TextColor="{StaticResource DiveTextSecondary}" />
+
+                            <HorizontalStackLayout
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Spacing="20">
+
+                                <Label
+                                    Text="{Binding MaxDepth, StringFormat='Depth: {0:F1} m'}"
+                                    TextColor="{StaticResource DiveTextPrimary}" />
+
+                                <Label
+                                    Text="{Binding BottomTimeMinutes, StringFormat='Time: {0} min'}"
+                                    TextColor="{StaticResource DiveTextPrimary}" />
+
+                            </HorizontalStackLayout>
+
+                        </Grid>
+
+                    </Border>
+
+                </DataTemplate>
+
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </Grid>
+
+</ContentPage>

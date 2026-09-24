@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="DiveHubLogbook.Views.AddDivePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:DiveHubLogbook.ViewModels"
+    x:DataType="viewmodels:AddDiveViewModel"
+    Title="New Dive"
+    BackgroundColor="{StaticResource DiveBackground}">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="10">
+
+            <Label
+                Text="New Dive"
+                Style="{StaticResource PageTitleStyle}" />
+
+            <Label
+                Text="Dive Number"
+                Style="{StaticResource FieldLabelStyle}" />
+
+            <Entry
+                Text="{Binding DiveNumber}"
+                Keyboard="Numeric"
+                Placeholder="Example: 327"
+                Style="{StaticResource InputEntryStyle}" />
+
+            <Label
+                Text="Dive Date"
+                Style="{StaticResource FieldLabelStyle}" />
+
+            <DatePicker
+                Date="{Binding DiveDate}"
+                BackgroundColor="{StaticResource DiveSurface}"
+                TextColor="{StaticResource DiveTextPrimary}" />
+
+            <Label
+                Text="Dive Site"
+                Style="{StaticResource FieldLabelStyle}" />
+
+            <Entry
+                Text="{Binding DiveSite}"
+                Placeholder="Example: Zenobia Wreck"
+                Style="{StaticResource InputEntryStyle}" />
+
+            <Label
+                Text="Maximum Depth (m)"
+                Style="{StaticResource FieldLabelStyle}" />
+
+            <Entry
+                Text="{Binding MaxDepth}"
+                Keyboard="Numeric"
+                Placeholder="Example: 32.5"
+                Style="{StaticResource InputEntryStyle}" />
+
+            <Label
+                Text="Bottom Time (minutes)"
+                Style="{StaticResource FieldLabelStyle}" />
+
+            <Entry
+                Text="{Binding BottomTimeMinutes}"
+                Keyboard="Numeric"
+                Placeholder="Optional"
+                Style="{StaticResource InputEntryStyle}" />
+
+            <Label
+                Text="Water Temperature (°C)"
+                Style="{StaticResource FieldLabelStyle}" />
+
+            <Entry
+                Text="{Binding WaterTemperature}"
+                Keyboard="Numeric"
+                Placeholder="Optional"
+                Style="{StaticResource InputEntryStyle}" />
+
+            <Label
+                Text="Exposure Suit"
+                Style="{StaticResource FieldLabelStyle}" />
+
+            <Picker
+                Title="Suit Type"
+                SelectedItem="{Binding SuitType}"
+                Style="{StaticResource InputPickerStyle}">
+
+                <Picker.Items>
+                    <x:String>Wet</x:String>
+                    <x:String>Dry</x:String>
+                </Picker.Items>
+
+            </Picker>
+
+            <VerticalStackLayout
+                Spacing="10"
+                IsVisible="{Binding IsWetSuit}">
+
+                <Label
+                    Text="Suit Length"
+                    Style="{StaticResource FieldLabelStyle}" />
+
+                <Picker
+                    Title="Select length"
+                    SelectedItem="{Binding SuitLength}"
+                    Style="{StaticResource InputPickerStyle}">
+
+                    <Picker.Items>
+                        <x:String>Long</x:String>
+                        <x:String>Short</x:String>
+                    </Picker.Items>
+
+                </Picker>
+
+                <Label
+                    Text="Suit Thickness (mm)"
+                    Style="{StaticResource FieldLabelStyle}" />
+
+                <Entry
+                    Text="{Binding SuitThicknessMm}"
+                    Keyboard="Numeric"
+                    Placeholder="Example: 5"
+                    Style="{StaticResource InputEntryStyle}" />
+
+            </VerticalStackLayout>
+
+            <Label
+                Text="Weight (kg)"
+                Style="{StaticResource FieldLabelStyle}" />
+
+            <Entry
+                Text="{Binding WeightKg}"
+                Keyboard="Numeric"
+                Placeholder="Example: 6"
+                Style="{StaticResource InputEntryStyle}" />
+
+            <Label
+                Text="Dive Buddy"
+                Style="{StaticResource FieldLabelStyle}" />
+
+            <Entry
+                Text="{Binding DiveBuddy}"
+                Placeholder="Optional"
+                Style="{StaticResource InputEntryStyle}" />
+
+            <Label
+                Text="Notes"
+                Style="{StaticResource FieldLabelStyle}" />
+
+            <Editor
+                Text="{Binding Notes}"
+                Placeholder="Dive notes..."
+                AutoSize="TextChanges"
+                HeightRequest="120"
+                Style="{StaticResource InputEditorStyle}" />
+
+            <Button
+                Text="Save Dive"
+                Command="{Binding SaveDiveCommand}"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Margin="0,15,0,30" />
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

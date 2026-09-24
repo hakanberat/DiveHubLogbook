@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="DiveHubLogbook.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="DiveHub Logbook">
+
+    <VerticalStackLayout
+        Padding="30"
+        Spacing="20"
+        VerticalOptions="Center">
+
+        <Label
+            Text="DiveHub Logbook"
+            FontSize="32"
+            FontAttributes="Bold"
+            HorizontalOptions="Center" />
+
+        <Label
+            Text="Your personal diving logbook"
+            FontSize="16"
+            HorizontalOptions="Center" />
+
+        <Button
+            Text="Add New Dive"
+            Clicked="OnAddDiveClicked" />
+            
+         <Button
+            Text="View Logbook"
+            Clicked="OnLogbookClicked" />
+
+    </VerticalStackLayout>
+
+</ContentPage>

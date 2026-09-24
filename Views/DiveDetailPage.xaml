@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="DiveHubLogbook.Views.DiveDetailPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:DiveHubLogbook.ViewModels"
+    x:DataType="viewmodels:DiveDetailViewModel"
+    Title="Dive Details"
+    BackgroundColor="{StaticResource DiveBackground}">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="16">
+
+            <Label
+                Text="Dive Details"
+                Style="{StaticResource PageTitleStyle}" />
+
+            <Border
+                Padding="18"
+                BackgroundColor="{StaticResource DiveSurface}"
+                Stroke="{StaticResource DiveBorder}"
+                StrokeThickness="1">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="14" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="8">
+
+                    <Label
+                        Text="{Binding Dive.DiveSite}"
+                        FontSize="26"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource DiveNavy}" />
+
+                    <Label
+                        Text="{Binding Dive.DiveNumber,
+                               StringFormat='Dive #{0}'}"
+                        FontSize="17"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource DiveTurquoise}" />
+
+                    <Label
+                        Text="{Binding Dive.DiveDate,
+                               StringFormat='Date: {0:dd MMM yyyy}'}"
+                        TextColor="{StaticResource DiveTextSecondary}" />
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <Border
+                Padding="18"
+                BackgroundColor="{StaticResource DiveSurface}"
+                Stroke="{StaticResource DiveBorder}"
+                StrokeThickness="1">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="14" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="10">
+
+                    <Label
+                        Text="Dive Information"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource DiveNavy}" />
+
+                    <Label
+                        Text="{Binding Dive.MaxDepth,
+                               StringFormat='Maximum Depth: {0:F1} m'}"
+                        TextColor="{StaticResource DiveTextPrimary}" />
+
+                    <Label
+                        Text="{Binding Dive.BottomTimeMinutes,
+                               StringFormat='Bottom Time: {0} min'}"
+                        TextColor="{StaticResource DiveTextPrimary}" />
+
+                    <Label
+                        Text="{Binding Dive.WaterTemperature,
+                               StringFormat='Water Temperature: {0:F1} °C'}"
+                        TextColor="{StaticResource DiveTextPrimary}" />
+
+                    <Label
+                        Text="{Binding Dive.WeightKg,
+                               StringFormat='Weight: {0:F1} kg'}"
+                        TextColor="{StaticResource DiveTextPrimary}" />
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <Border
+                Padding="18"
+                BackgroundColor="{StaticResource DiveSurface}"
+                Stroke="{StaticResource DiveBorder}"
+                StrokeThickness="1">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="14" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="10">
+
+                    <Label
+                        Text="Exposure Suit"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource DiveNavy}" />
+
+                    <Label
+                        Text="{Binding Dive.SuitType,
+                               StringFormat='Suit Type: {0}'}"
+                        TextColor="{StaticResource DiveTextPrimary}" />
+
+                    <Label
+                        Text="{Binding Dive.SuitLength,
+                               StringFormat='Suit Length: {0}'}"
+                        TextColor="{StaticResource DiveTextPrimary}" />
+
+                    <Label
+                        Text="{Binding Dive.SuitThicknessMm,
+                               StringFormat='Suit Thickness: {0:F1} mm'}"
+                        TextColor="{StaticResource DiveTextPrimary}" />
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <Border
+                Padding="18"
+                BackgroundColor="{StaticResource DiveSurface}"
+                Stroke="{StaticResource DiveBorder}"
+                StrokeThickness="1">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="14" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="10">
+
+                    <Label
+                        Text="Dive Buddy"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource DiveNavy}" />
+
+                    <Label
+                        Text="{Binding Dive.DiveBuddy}"
+                        TextColor="{StaticResource DiveTextPrimary}" />
+
+                    <Label
+                        Text="Notes"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource DiveNavy}"
+                        Margin="0,10,0,0" />
+
+                    <Label
+                        Text="{Binding Dive.Notes}"
+                        TextColor="{StaticResource DiveTextPrimary}" />
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <Button
+    Text="Edit Dive"
+    Clicked="OnEditClicked"
+    Style="{StaticResource SecondaryButtonStyle}"
+    BackgroundColor="{StaticResource DiveNavy}"
+    TextColor="White" />
+
+<Button
+    Text="Delete Dive"
+    Clicked="OnDeleteClicked"
+    Style="{StaticResource DangerButtonStyle}"
+    BackgroundColor="{StaticResource DiveDanger}"
+    TextColor="White"
+    Margin="0,0,0,30" />
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>
