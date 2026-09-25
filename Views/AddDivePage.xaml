@@ -7,18 +7,17 @@
     xmlns:viewmodels="clr-namespace:DiveHubLogbook.ViewModels"
     x:DataType="viewmodels:AddDiveViewModel"
     Title="New Dive"
+    Shell.BackgroundColor="{StaticResource DiveNavy}"
+    Shell.TitleColor="White"
+    Shell.ForegroundColor="White"
     BackgroundColor="{StaticResource DiveBackground}">
-
     <ScrollView>
 
         <VerticalStackLayout
             Padding="20"
             Spacing="10">
 
-            <Label
-                Text="New Dive"
-                Style="{StaticResource PageTitleStyle}" />
-
+            
             <Label
                 Text="Dive Number"
                 Style="{StaticResource FieldLabelStyle}" />

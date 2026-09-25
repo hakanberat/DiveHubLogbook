@@ -7,167 +7,189 @@
     xmlns:viewmodels="clr-namespace:DiveHubLogbook.ViewModels"
     x:DataType="viewmodels:DashboardViewModel"
     Title="Dashboard"
-    BackgroundColor="{StaticResource DiveBackground}">
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="{StaticResource DiveNavy}">
 
-    <ScrollView>
+    <Grid RowDefinitions="Auto,*">
 
+        <!-- DIVE HUB HEADER -->
         <VerticalStackLayout
-            Padding="20"
-            Spacing="20">
+            Grid.Row="0"
+            Padding="20,22,20,24"
+            Spacing="4"
+            BackgroundColor="{StaticResource DiveNavy}">
 
             <Label
                 Text="DIVE HUB"
                 FontSize="30"
                 FontAttributes="Bold"
-                TextColor="{StaticResource DiveNavy}" />
+                TextColor="White" />
 
             <Label
                 Text="Dive Logbook"
                 FontSize="18"
-                TextColor="{StaticResource DiveTextSecondary}" />
-
-            <Grid
-                ColumnDefinitions="*,*"
-                RowDefinitions="Auto,Auto"
-                ColumnSpacing="12"
-                RowSpacing="12">
-
-                <!-- Total Dives -->
-                <Border
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Padding="16"
-                    BackgroundColor="{StaticResource DiveSurface}"
-                    Stroke="{StaticResource DiveBorder}"
-                    StrokeThickness="1">
-
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="14" />
-                    </Border.StrokeShape>
-
-                    <VerticalStackLayout Spacing="6">
-
-                        <Label
-                            Text="Total Dives"
-                            TextColor="{StaticResource DiveTextSecondary}" />
-
-                        <Label
-                            Text="{Binding TotalDives}"
-                            FontSize="28"
-                            FontAttributes="Bold"
-                            TextColor="{StaticResource DiveTurquoise}" />
-
-                    </VerticalStackLayout>
-
-                </Border>
-
-                <!-- Max Depth -->
-                <Border
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Padding="16"
-                    BackgroundColor="{StaticResource DiveSurface}"
-                    Stroke="{StaticResource DiveBorder}"
-                    StrokeThickness="1">
-
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="14" />
-                    </Border.StrokeShape>
-
-                    <VerticalStackLayout Spacing="6">
-
-                        <Label
-                            Text="Max Depth"
-                            TextColor="{StaticResource DiveTextSecondary}" />
-
-                        <Label
-                            Text="{Binding MaxDepth, StringFormat='{}{0:F1} m'}"
-                            FontSize="28"
-                            FontAttributes="Bold"
-                            TextColor="{StaticResource DiveTurquoise}" />
-
-                    </VerticalStackLayout>
-
-                </Border>
-
-                <!-- Bottom Time -->
-                <Border
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Padding="16"
-                    BackgroundColor="{StaticResource DiveSurface}"
-                    Stroke="{StaticResource DiveBorder}"
-                    StrokeThickness="1">
-
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="14" />
-                    </Border.StrokeShape>
-
-                    <VerticalStackLayout Spacing="6">
-
-                        <Label
-                            Text="Total Bottom Time"
-                            TextColor="{StaticResource DiveTextSecondary}" />
-
-                        <Label
-                            Text="{Binding TotalBottomTimeText}"
-                            FontSize="28"
-                            FontAttributes="Bold"
-                            TextColor="{StaticResource DiveTurquoise}" />
-
-                    </VerticalStackLayout>
-
-                </Border>
-
-            </Grid>
-
-            <Label
-                Text="Last Dive"
-                FontSize="20"
                 FontAttributes="Bold"
-                TextColor="{StaticResource DiveNavy}"
-                Margin="0,5,0,0" />
-
-            <Border
-                Padding="16"
-                BackgroundColor="{StaticResource DiveSurface}"
-                Stroke="{StaticResource DiveBorder}"
-                StrokeThickness="1">
-
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="14" />
-                </Border.StrokeShape>
-
-                <VerticalStackLayout Spacing="6">
-
-                    <Label
-                        Text="{Binding LastDiveSite}"
-                        FontSize="20"
-                        FontAttributes="Bold"
-                        TextColor="{StaticResource DiveNavy}" />
-
-                    <Label
-                        Text="{Binding LastDiveDate,
-                               StringFormat='{}{0:dd MMM yyyy}'}"
-                        TextColor="{StaticResource DiveTextSecondary}" />
-
-                </VerticalStackLayout>
-
-            </Border>
-
-            <Button
-                Text="Add New Dive"
-                Style="{StaticResource PrimaryButtonStyle}"
-                Clicked="OnAddDiveClicked" />
-
-            <Button
-                Text="View Logbook"
-                Style="{StaticResource SecondaryButtonStyle}"
-                Clicked="OnLogbookClicked" />
+                TextColor="{StaticResource DiveTurquoise}" />
 
         </VerticalStackLayout>
 
-    </ScrollView>
+        <!-- DASHBOARD CONTENT -->
+        <ScrollView
+            Grid.Row="1"
+            BackgroundColor="{StaticResource DiveBackground}">
+
+            <VerticalStackLayout
+                Padding="20"
+                Spacing="20">
+
+                <!-- STATISTICS -->
+                <Grid
+                    ColumnDefinitions="*,*"
+                    RowDefinitions="Auto,Auto"
+                    ColumnSpacing="12"
+                    RowSpacing="12">
+
+                    <!-- Total Dives -->
+                    <Border
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Padding="16"
+                        BackgroundColor="{StaticResource DiveSurface}"
+                        Stroke="{StaticResource DiveBorder}"
+                        StrokeThickness="1">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="14" />
+                        </Border.StrokeShape>
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                                Text="Total Dives"
+                                TextColor="{StaticResource DiveTextSecondary}" />
+
+                            <Label
+                                Text="{Binding TotalDives}"
+                                FontSize="28"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource DiveTurquoise}" />
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                    <!-- Max Depth -->
+                    <Border
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Padding="16"
+                        BackgroundColor="{StaticResource DiveSurface}"
+                        Stroke="{StaticResource DiveBorder}"
+                        StrokeThickness="1">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="14" />
+                        </Border.StrokeShape>
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                                Text="Max Depth"
+                                TextColor="{StaticResource DiveTextSecondary}" />
+
+                            <Label
+                                Text="{Binding MaxDepth, StringFormat='{}{0:F1} m'}"
+                                FontSize="28"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource DiveTurquoise}" />
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                    <!-- Total Bottom Time -->
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Padding="16"
+                        BackgroundColor="{StaticResource DiveSurface}"
+                        Stroke="{StaticResource DiveBorder}"
+                        StrokeThickness="1">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="14" />
+                        </Border.StrokeShape>
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                                Text="Total Bottom Time"
+                                TextColor="{StaticResource DiveTextSecondary}" />
+
+                            <Label
+                                Text="{Binding TotalBottomTimeText}"
+                                FontSize="28"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource DiveTurquoise}" />
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                </Grid>
+
+                <!-- LAST DIVE -->
+                <Label
+                    Text="Last Dive"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    TextColor="{StaticResource DiveNavy}"
+                    Margin="0,5,0,0" />
+
+                <Border
+                    Padding="16"
+                    BackgroundColor="{StaticResource DiveSurface}"
+                    Stroke="{StaticResource DiveBorder}"
+                    StrokeThickness="1">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14" />
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label
+                            Text="{Binding LastDiveSite}"
+                            FontSize="20"
+                            FontAttributes="Bold"
+                            TextColor="{StaticResource DiveNavy}" />
+
+                        <Label
+                            Text="{Binding LastDiveDate,
+                                   StringFormat='{}{0:dd MMM yyyy}'}"
+                            TextColor="{StaticResource DiveTextSecondary}" />
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+                <!-- BUTTONS -->
+              <Button
+    Text="Add New Dive"
+    Style="{StaticResource PrimaryButtonStyle}"
+    Clicked="OnAddDiveClicked" />
+
+<Button
+    Text="View Logbook"
+    Style="{StaticResource SecondaryButtonStyle}"
+    Clicked="OnLogbookClicked"
+    Margin="0,0,0,20" />
+    
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </Grid>
 
 </ContentPage>

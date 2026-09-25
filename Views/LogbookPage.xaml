@@ -8,31 +8,29 @@
     xmlns:models="clr-namespace:DiveHubLogbook.Models"
     x:DataType="viewmodels:LogbookViewModel"
     Title="Logbook"
-    BackgroundColor="{StaticResource DiveBackground}">
+    BackgroundColor="{StaticResource DiveBackground}"
+    Shell.BackgroundColor="{StaticResource DiveNavy}"
+    Shell.TitleColor="White"
+    Shell.ForegroundColor="White">
 
     <Grid
-        Padding="20"
-        RowDefinitions="Auto,Auto,*"
-        RowSpacing="15">
+    Padding="20"
+    RowDefinitions="Auto,*"
+    RowSpacing="15">
 
-        <Label
-            Grid.Row="0"
-            Text="My Dives"
-            Style="{StaticResource PageTitleStyle}" />
+    <SearchBar
+        Grid.Row="0"
+        Placeholder="Search by dive site, buddy, or notes"
+        Text="{Binding SearchText}"
+        BackgroundColor="{StaticResource DiveSurface}"
+        TextColor="{StaticResource DiveTextPrimary}"
+        PlaceholderColor="{StaticResource DiveTextSecondary}" />
 
-        <SearchBar
-            Grid.Row="1"
-            Placeholder="Search by dive site, buddy, or notes"
-            Text="{Binding SearchText}"
-            BackgroundColor="{StaticResource DiveSurface}"
-            TextColor="{StaticResource DiveTextPrimary}"
-            PlaceholderColor="{StaticResource DiveTextSecondary}" />
-
-        <CollectionView
-            Grid.Row="2"
-            ItemsSource="{Binding Dives}"
-            SelectionMode="Single"
-            SelectionChanged="OnDiveSelected">
+    <CollectionView
+        Grid.Row="1"
+        ItemsSource="{Binding Dives}"
+        SelectionMode="Single"
+        SelectionChanged="OnDiveSelected">
 
             <CollectionView.EmptyView>
 
